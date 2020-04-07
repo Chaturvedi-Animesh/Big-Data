@@ -5,4 +5,4 @@ const Scheme=mongoose.Schema({
     imgUrl:String
 })
 
-module.exports=mongoose.model('News',Scheme)
+module.exports=mongoose.model('news2',Scheme)

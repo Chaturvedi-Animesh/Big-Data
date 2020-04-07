@@ -4,14 +4,15 @@ const mongoose=require('mongoose')
 const newsdb=require('./Resources/models/newsMongo')
 const path=require('path')
 const app=express()
+const apidata=require('./Resources/API/apiCall')
 
-mongoose.connect('mongodb+srv://stud205:ann123@cluster0-tsk5d.mongodb.net/test?retryWrites=true&w=majority',
+
+mongoose.connect('mongodb://localhost/news_app',
 { useNewUrlParser: true , useUnifiedTopology: true})
 mongoose.connection.on('error',function(err){
     console.log("error connecting db"+err)
 })
 
-const apidata=require('./Resources/API/apiCall')
 
 apidata.headlines.then(function(data){
     for(let i=0;i<Object.keys(data.articles).length;i++){
