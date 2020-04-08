@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headlines</title>
+</head>
+<body>
+    <h1>The News HeadLines Are:-</h1>
+    <ul>
+        <% for( let i of newsList ) { %>
+        <li>
+            <h3><%=i.title %> </h3>
+            <img src="<%=i.imgUrl  %> " width="50%">
+            <p><%=i.description %> </p>
+        </li>
+        <% } %>
+        
+    </ul>
+
+
+</body>
+</html>

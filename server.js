@@ -14,24 +14,7 @@ mongoose.connection.on('error',function(err){
 })
 
 
-apidata.headlines.then(function(data){
-    for(let i=0;i<Object.keys(data.articles).length;i++){
-       
-     var savedata=new newsdb({
-         title:data.articles[i].title,
-         imgUrl:data.articles[i].urlToImage
-     })
 
-     console.log(savedata)
-
-     savedata.save().then(data => console.log(data)).catch(err => console.log(err))
-    }
-
-
-    
-    
-     
-})
 
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'Resources/html'));
@@ -41,6 +24,33 @@ app.use(express.static(__dirname+'/Resources/public'))
 
 app.get('/',function(req,res){
     res.render("home")
+})
+
+app.get('/heads',function(req,res){
+    apidata.headlines.then(function(data){
+        for(let i=0;i<Object.keys(data.articles).length;i++){
+           
+         var savedata=new newsdb({
+             title:data.articles[i].title,
+             description:data.articles[i].description,
+             imgUrl:data.articles[i].urlToImage
+         })
+         
+    
+        savedata.save().then().catch(err => console.log(err))
+        }
+        setTimeout(respons,2000)
+        
+        function respons(){        
+    
+       newsdb.find({},function(err,loaddata){
+        res.render('headline',{newsList:loaddata})
+          
+       })}
+    
+    })
+    
+    
 })
 
 app.listen(port,function(err){
