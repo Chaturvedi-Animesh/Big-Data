@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Headlines</title>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma+2|Girassol&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1d11a3e0ee.js" crossorigin="anonymous"></script>
+    <title>Live News</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <div id="header">
+        <div id="logo-img">
+        <img src="Images/iconImage.png" alt="" style="height: 80px;">
+    </div></div>
     <h1>The News HeadLines Are:-</h1>
     <ul>
         <% for( let i of newsList ) { %>
+            <div id="container">
         <li>
             <h3><%=i.title %> </h3>
-            <img src="<%=i.imgUrl  %> " width="50%">
-            <a href=<%=i.newsUrl %> >Read more...</a>
-        </li>
+            <img src="<%=i.imgUrl  %> " class="news-img"> <br>
+            <a href=<%=i.newsUrl %> target="_blank" >Read more    </a><i class="far fa-hand-point-right"></i>
+        </li></div>
         <% } %>
         
     </ul>
